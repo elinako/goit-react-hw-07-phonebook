@@ -5,7 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import actionCintacts from "../../redux/contacts/actionsContacts";
 import actionsContacts from "../../redux/contacts/actionsContacts";
 
 const ListItem = styled.li`
@@ -50,6 +49,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   const normalizedFilter = state.contacts.filter.toLowerCase();
   const filteredContacts = state.contacts.items.filter((contact) =>
     contact.name.toLowerCase().includes(normalizedFilter)

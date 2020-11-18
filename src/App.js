@@ -34,19 +34,6 @@ const App = ({ alert, alertNotification, length }) => {
   );
 };
 
-// componentDidMount() {
-//   if (localStorage.getItem("contacts") !== null) {
-//     const contactsFromStorage = localStorage.getItem("contacts");
-//     this.setState({ contacts: JSON.parse(contactsFromStorage) });
-//   }
-// }
-
-// componentDidUpdate(prevState) {
-//   if (prevState !== this.state) {
-//     localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-//   }
-// }
-
 const mapStateToProps = (state) => {
   const contacts = state.contacts.items.length;
   return {

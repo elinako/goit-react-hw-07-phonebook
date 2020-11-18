@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import actionContacts from "../contacts/actionsContacts";
 
-const onAddContact = (state, action) => [...state, action.payload.contact];
+const onAddContact = (state, action) => [...state, action.payload];
 
 const onDeleteContact = (state, action) =>
   state.filter((contact) => contact.id !== action.payload);
@@ -19,7 +19,7 @@ const onShowAlert = (state, action) => {
 };
 
 const itemsReducer = createReducer([], {
-  [actionContacts.addContact]: onAddContact,
+  [actionContacts.addContactSuccess]: onAddContact,
   [actionContacts.deleteContact]: onDeleteContact,
 });
 

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
 import FormTitleAnimation from "./FormTitleAnimation.module.css";
 import { connect } from "react-redux";
-import actionContacts from "../../redux/contacts/actionsContacts";
+import contactsOperations from "../../redux/contacts/contactsOperations";
 uuidv4();
 
 const HeaderText = styled.h2`
@@ -108,7 +108,7 @@ class Form extends Component {
 }
 
 const mapDispatchToProps = {
-  onAddContact: actionContacts.addContact,
+  onAddContact: contactsOperations.addContact,
 };
 
 export default connect(null, mapDispatchToProps)(Form);
