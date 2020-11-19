@@ -20,16 +20,6 @@ const App = ({ alert, alertNotification, length }) => {
       <Form />
       {length > 1 && <SearchInput />}
       <ContactList />
-
-      <CSSTransition
-        in={alert}
-        onEntered={() => alertNotification()}
-        timeout={500}
-        classNames={AlertAnimation}
-        unmountOnExit
-      >
-        <Alert />
-      </CSSTransition>
     </Container>
   );
 };
@@ -37,12 +27,8 @@ const App = ({ alert, alertNotification, length }) => {
 const mapStateToProps = (state) => {
   const contacts = state.contacts.items.length;
   return {
-    alert: state.contacts.alert,
     length: contacts,
   };
 };
-const mapDispatchToProps = {
-  alertNotification: actionContacts.setVisible,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

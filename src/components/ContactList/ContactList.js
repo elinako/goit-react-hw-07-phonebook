@@ -48,8 +48,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
+const mapStateToProps = (state, store) => {
   const normalizedFilter = state.contacts.filter.toLowerCase();
   const filteredContacts = state.contacts.items.filter((contact) =>
     contact.name.toLowerCase().includes(normalizedFilter)

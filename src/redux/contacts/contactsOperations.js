@@ -1,14 +1,13 @@
 import axios from "axios";
 import actionContacts from "../contacts/actionsContacts";
 
-const addContact = ({ name, number }) => (dispatch) => {
+const addContact = (contact) => (dispatch) => {
   dispatch(actionContacts.addContactRequest());
 
   axios
-    .post("http://localhost:2000/contacts", { name, number })
-    .then(
-      (response) => console.log(response.data),
-      dispatch(actionContacts.addContactSuccess())
+    .post("http://localhost:2000/contacts", { contact })
+    .then((response) =>
+      dispatch(actionContacts.addContactSuccess(response.data))
     )
     .catch((error) => actionContacts.addContactError(error));
 };
