@@ -1,28 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import Form from "./components/Form/Form";
 import ContactList from "./components/ContactList/ContactList";
 import SearchInput from "./components/SearchInput/SearchInput";
-import Alert from "./components/Alert/Alert";
-import { CSSTransition } from "react-transition-group";
-import AlertAnimation from "./components/Alert/AlertAnimation.module.css";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import actionContacts from "./redux/contacts/actionsContacts";
+import contactsOperations from "./redux/contacts/contactsOperations";
 
 const Container = styled.div`
   font-family: sans-serif;
   font-size: 16px;
 `;
 
-const App = ({ alert, alertNotification, length }) => {
-  return (
-    <Container>
-      <Form />
-      {length > 1 && <SearchInput />}
-      <ContactList />
-    </Container>
-  );
-};
+class App extends Component {
+  componentDidMount = () => {
+    this.props.onFetchContacts();
+  };
+
+  render() {
+    return (
+      <Container>
+        <Form />
+        {this.props.length > 1 && <SearchInput />}
+        <ContactList />
+      </Container>
+    );
+  }
+}
 
 const mapStateToProps = (state) => {
   const contacts = state.contacts.items.length;
@@ -31,4 +34,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  onFetchContacts: contactsOperations.fetchContacts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

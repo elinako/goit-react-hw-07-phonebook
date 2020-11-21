@@ -8,8 +8,9 @@ const onDeleteContact = (state, action) =>
   state.filter((contact) => contact.id !== action.payload);
 
 const itemsReducer = createReducer([], {
+  [actionContacts.fetchContactSuccess]: (state, action) => action.payload,
   [actionContacts.addContactSuccess]: onAddContact,
-  [actionContacts.deleteContact]: onDeleteContact,
+  [actionContacts.deleteContactSuccess]: onDeleteContact,
 });
 
 const filterReducer = createReducer("", {

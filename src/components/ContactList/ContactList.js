@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import actionsContacts from "../../redux/contacts/actionsContacts";
+import contactsOperations from "../../redux/contacts/contactsOperations";
 
 const ListItem = styled.li`
   box-shadow: 3px 3px 5px -1px rgba(134, 133, 245, 0.77);
@@ -48,7 +48,8 @@ const ContactList = ({ contacts, onDeleteContact }) => {
   );
 };
 
-const mapStateToProps = (state, store) => {
+const mapStateToProps = (state) => {
+  console.log(state.contacts);
   const normalizedFilter = state.contacts.filter.toLowerCase();
   const filteredContacts = state.contacts.items.filter((contact) =>
     contact.name.toLowerCase().includes(normalizedFilter)
@@ -59,7 +60,7 @@ const mapStateToProps = (state, store) => {
 };
 
 const mapDispatchToProps = {
-  onDeleteContact: actionsContacts.deleteContact,
+  onDeleteContact: contactsOperations.deleteContact,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
