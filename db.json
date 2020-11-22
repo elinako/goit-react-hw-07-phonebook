@@ -1,44 +1,22 @@
 {
   "contacts": [
     {
-      "contact": {
-        "name": "vhjkl;",
-        "number": "",
-        "showAlert": false
-      },
+      "name": "cat",
+      "number": "",
+      "showAlert": false,
       "id": 1
     },
     {
-      "contact": {
-        "name": "sdf",
-        "number": "",
-        "showAlert": false
-      },
+      "name": "111",
+      "number": "",
+      "showAlert": false,
       "id": 2
     },
     {
-      "contact": {
-        "name": "sdsd",
-        "number": "",
-        "showAlert": false
-      },
+      "name": "2233",
+      "number": "",
+      "showAlert": false,
       "id": 3
-    },
-    {
-      "contact": {
-        "name": "asdfg",
-        "number": "",
-        "showAlert": false
-      },
-      "id": 4
-    },
-    {
-      "contact": {
-        "name": "sd",
-        "number": "",
-        "showAlert": false
-      },
-      "id": 5
     }
   ]
 }

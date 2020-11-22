@@ -1,11 +1,11 @@
 import React from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ListItemAnimation from "./ListItemAnimation.module.css";
-import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import contactsOperations from "../../redux/contacts/contactsOperations";
+import contactsSelector from "../../redux/contacts/contactsSelector";
 
 const ListItem = styled.li`
   box-shadow: 3px 3px 5px -1px rgba(134, 133, 245, 0.77);
@@ -48,16 +48,9 @@ const ContactList = ({ contacts, onDeleteContact }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state.contacts.items);
-  const normalizedFilter = state.contacts.filter.toLowerCase();
-  const filteredContacts = state.contacts.items.filter((contact) =>
-    contact.name.toLowerCase().includes(normalizedFilter)
-  );
-  return {
-    contacts: filteredContacts,
-  };
-};
+const mapStateToProps = (state) => ({
+  contacts: contactsSelector.getVisibleContacts(state),
+});
 
 const mapDispatchToProps = {
   onDeleteContact: contactsOperations.deleteContact,

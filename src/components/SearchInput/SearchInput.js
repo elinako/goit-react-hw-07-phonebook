@@ -3,6 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import actionContacts from "../../redux/contacts/actionsContacts";
+import contactsSelector from "../../redux/contacts/contactsSelector";
 
 const Input = styled.input`
   width: 395px;
@@ -26,7 +27,7 @@ const SearchInput = ({ value, onChangeSearchInput }) => {
 };
 
 const mapStateToProps = (state) => ({
-  value: state.contacts.filter,
+  value: contactsSelector.getFilter(state),
 });
 
 const mapDispatchToProps = {

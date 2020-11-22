@@ -10,6 +10,7 @@
     "axios": "^0.21.0",
     "gh-pages": "^3.1.0",
     "json-server": "^0.16.3",
+    "netlify-cli": "^2.68.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -23,11 +24,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "netlify deploy -p",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server -p 2000 -d 300 -w db.json"
+    "server": "json-server -p 1000 -d 300 -w db.json",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
