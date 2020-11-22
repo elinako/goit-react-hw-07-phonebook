@@ -37,7 +37,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
       <TransitionGroup>
         {contacts.map(({ id, name, number }) => (
           <CSSTransition key={id} timeout={250} classNames={ListItemAnimation}>
-            <ListItem>
+            <ListItem key={id}>
               {name} : {number}
               <Button onClick={() => onDeleteContact(id)}>delete</Button>
             </ListItem>
@@ -49,7 +49,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.contacts);
+  console.log(state.contacts.items);
   const normalizedFilter = state.contacts.filter.toLowerCase();
   const filteredContacts = state.contacts.items.filter((contact) =>
     contact.name.toLowerCase().includes(normalizedFilter)
